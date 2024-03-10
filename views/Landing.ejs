@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <title>Coast Appliances - Scraper</title>
+  <script src="script.js"></script>
+  <link rel="shortcut icon" href="https://cdn.shopify.com/s/files/1/0491/6943/2739/files/Favicon_256x256_e7a9ff46-e8ba-4817-ba4d-fbffdb6fc1c0_96x96.png?v=1644444872">
+  
+  <div class="header">
+    <p>Coast Appliances - Scraper</p>
+    <div class="menuOptions">
+        <form action="/search" method="POST"><input name="f_modelNum" placeholder="Name or Model #" autocomplete="off"><button type="submit">Search</button></form>
+        <form action="/show" method="GET"><button type="submit">Show All</button></form>
+        <form action="/options" method="GET"><button type="submit">Options</button></form>
+        <form action="/scrapelog" method="GET"><button type="submit">Scrape Log</button></form>
+        <form action="/logout?_method=DELETE" method="POST"><button type="submit">Log Out</button></form>
+    </div>
+  </div>
+
+</head>
+
+<body>
+  <table>
+    <tr>
+      <th>Model Number</th>
+      <th>Name</th>
+      <th>Coast Appliances Price</th>
+      <th>Home Depot Price</th>
+      <th>Lowes Price</th>
+      <th>Trail Appliances Price</th>
+    </tr>
+    <% if(results != null) { results.forEach(function(r) { %>
+      <tr>
+        <td><button onclick="findsite('<%= r.modelnum %>')" style="width:100%"><%= r.modelnum %></button></td>
+        <td><%= r.name %></td>
+        <td><%= r.pcoast %></td>
+        <td><%= r.phomedepot %></td>
+        <td><%= r.plowes %></td>
+        <td><%= r.ptrail %></td>
+      </tr>
+    <% })}; %>
+    
+  </table>
+</body>
+
+</html>

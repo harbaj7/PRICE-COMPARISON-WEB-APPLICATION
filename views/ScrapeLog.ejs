@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="https://cdn.shopify.com/s/files/1/0491/6943/2739/files/Favicon_256x256_e7a9ff46-e8ba-4817-ba4d-fbffdb6fc1c0_96x96.png?v=1644444872">
+
+    <div class="header">
+        <p>Scrape Time Log</p>
+        <div class="menuOptions">
+            <form action="/options" method="GET"><button type="submit">Options</button></form>
+            <form action="/" method="GET"><button type="submit">Return Home</button></form>
+            <form action="/logout?_method=DELETE" method="POST"><button type="submit">Log Out</button></form>
+        </div>
+    </div>
+
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>Coast Start</th>
+            <th>Coast End</th>
+            <th>HD Start</th>
+            <th>HD End</th>
+            <th>Lowes Start</th>
+            <th>Lowes End</th>
+            <th>Trail Start</th>
+            <th>Trail End</th>
+        </tr>
+        <% results.forEach(function(r) { %>
+        <tr>
+            <td><%= r.coaststart %></td>
+            <td><%= r.coastend %></td>
+            <td><%= r.homedepotstart %></td>
+            <td><%= r.homedepotend %></td>
+            <td><%= r.lowesstart %></td>
+            <td><%= r.lowesend %></td>
+            <td><%= r.trailstart %></td>
+            <td><%= r.trailend %></td>
+        </tr>
+        <% }); %>
+
+    </table>
+</body>
+
+</html>
